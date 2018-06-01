@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/otiai10/dkmachine"
+	"github.com/otiai10/jsonindent"
 )
 
 func main() {
@@ -22,6 +24,14 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Printf("%+v\n", m)
+	jsonindent.NewEncoder(os.Stdout).Encode(m)
 	// defer m.Remove()
+
+	// fmt.Printf("%+v\n", m.HostConfig.Driver)
+
+	// jsonindent.NewEncoder(os.Stdout).Encode(m.HostConfig.Driver)
+
+	fmt.Println(
+		m.GetPrivateIPAddress(),
+	)
 }
